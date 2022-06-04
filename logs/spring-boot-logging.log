@@ -1,0 +1,55 @@
+2022-06-05 00:01:28,450 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8086-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-05 00:01:28,452 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8086-exec-3] Initializing Servlet 'dispatcherServlet'
+2022-06-05 00:01:28,454 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8086-exec-3] Completed initialization in 2 ms
+2022-06-05 00:01:28,795 INFO com.tr.beyzanur.service.implementation.UserDetailsImpl [http-nio-8086-exec-3] User ID -> 2 date: Sun Jun 05 00:01:28 TRT 2022 registered
+2022-06-05 00:01:28,809 INFO com.tr.beyzanur.service.implementation.CustomerServiceImpl [http-nio-8086-exec-3] Customer ID -> 2 date: Sun Jun 05 00:01:28 TRT 2022 saved
+2022-06-05 00:02:05,738 ERROR com.tr.beyzanur.security.AuthEntryPointJwt [http-nio-8086-exec-2] Unauthorized error: Cannot invoke "com.tr.beyzanur.model.User.getRoles()" because "user" is null
+2022-06-05 00:03:28,353 INFO org.springframework.boot.StartupInfoLogger [main] Starting Application using Java 18.0.1 on LAPTOP-7AAOV455 with PID 17508 (C:\Users\Beyzanur\Documents\com.tr.beyzanur\target\classes started by Beyzanur in C:\Users\Beyzanur\Documents\com.tr.beyzanur)
+2022-06-05 00:03:28,357 INFO org.springframework.boot.SpringApplication [main] The following 1 profile is active: "dev"
+2022-06-05 00:03:29,530 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-05 00:03:29,618 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 76 ms. Found 6 JPA repository interfaces.
+2022-06-05 00:03:30,161 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8086 (http)
+2022-06-05 00:03:30,170 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-06-05 00:03:30,171 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-06-05 00:03:30,272 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-06-05 00:03:30,273 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1855 ms
+2022-06-05 00:03:30,429 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-05 00:03:30,473 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.8.Final
+2022-06-05 00:03:30,581 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-05 00:03:30,673 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2022-06-05 00:03:30,843 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-06-05 00:03:30,867 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-06-05 00:03:32,196 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-05 00:03:32,204 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-05 00:03:32,619 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-05 00:03:33,423 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2162598, org.springframework.security.web.context.SecurityContextPersistenceFilter@6e70861, org.springframework.security.web.header.HeaderWriterFilter@1d01fa0c, org.springframework.web.filter.CorsFilter@3cf1b5fb, org.springframework.security.web.authentication.logout.LogoutFilter@3545c913, com.tr.beyzanur.security.AuthTokenFilter@a0bdbe2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b5d6f9c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@495e1ad1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4598961d, org.springframework.security.web.session.SessionManagementFilter@35d62807, org.springframework.security.web.access.ExceptionTranslationFilter@61c644fe, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@15d68a50]
+2022-06-05 00:03:33,723 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8086 (http) with context path ''
+2022-06-05 00:03:34,085 INFO org.springframework.boot.StartupInfoLogger [main] Started Application in 6.498 seconds (JVM running for 7.332)
+2022-06-05 00:03:58,138 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8086-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-05 00:03:58,139 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8086-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-06-05 00:03:58,142 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8086-exec-2] Completed initialization in 3 ms
+2022-06-05 00:03:58,519 INFO com.tr.beyzanur.service.implementation.UserDetailsImpl [http-nio-8086-exec-2] User Identify Number -> beyza date: Sun Jun 05 00:03:58 TRT 2022 logging
+2022-06-05 00:12:08,036 INFO org.springframework.boot.StartupInfoLogger [main] Starting Application using Java 18.0.1 on LAPTOP-7AAOV455 with PID 7816 (C:\Users\Beyzanur\Documents\com.tr.beyzanur\target\classes started by Beyzanur in C:\Users\Beyzanur\Documents\com.tr.beyzanur)
+2022-06-05 00:12:08,042 INFO org.springframework.boot.SpringApplication [main] The following 1 profile is active: "dev"
+2022-06-05 00:12:09,364 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-05 00:12:09,462 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 89 ms. Found 6 JPA repository interfaces.
+2022-06-05 00:12:10,085 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8086 (http)
+2022-06-05 00:12:10,097 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-06-05 00:12:10,097 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.62]
+2022-06-05 00:12:10,211 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-06-05 00:12:10,211 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2094 ms
+2022-06-05 00:12:10,377 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-05 00:12:10,438 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.8.Final
+2022-06-05 00:12:10,594 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-05 00:12:10,687 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2022-06-05 00:12:10,862 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-06-05 00:12:10,885 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-06-05 00:12:12,294 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-05 00:12:12,304 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-05 00:12:12,667 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-05 00:12:13,515 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@cef23a8, org.springframework.security.web.context.SecurityContextPersistenceFilter@7bc3c59f, org.springframework.security.web.header.HeaderWriterFilter@6e21c6ed, org.springframework.web.filter.CorsFilter@762d2e4c, org.springframework.security.web.authentication.logout.LogoutFilter@57859e2c, com.tr.beyzanur.security.AuthTokenFilter@5f81507a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1454339d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5fcff272, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e4bf55b, org.springframework.security.web.session.SessionManagementFilter@738153d8, org.springframework.security.web.access.ExceptionTranslationFilter@1d5fc340, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f3b11e6]
+2022-06-05 00:12:13,844 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8086 (http) with context path ''
+2022-06-05 00:12:14,107 INFO org.springframework.boot.StartupInfoLogger [main] Started Application in 6.897 seconds (JVM running for 7.98)
+2022-06-05 00:12:20,125 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8086-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-05 00:12:20,125 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8086-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-06-05 00:12:20,126 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8086-exec-1] Completed initialization in 1 ms
