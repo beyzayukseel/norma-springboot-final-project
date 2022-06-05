@@ -1,7 +1,7 @@
 package com.tr.beyzanur.dto.request;
 
 import com.tr.beyzanur.dto.response.AccountResponseDto;
-import com.tr.beyzanur.model.Account;
+import com.tr.beyzanur.model.enums.TransactionStatus;
 import com.tr.beyzanur.model.enums.TransactionType;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +15,9 @@ import java.util.UUID;
 public class CreateTransactionDto {
 
     private LocalDate createdDate;
-    private UUID sourceIbanNumber;
     private UUID destinationIbanNumber;
     private BigDecimal quantity;
     private TransactionType transactionType;
     private AccountResponseDto accountResponseDto;
+    private TransactionStatus transactionStatus;
 }

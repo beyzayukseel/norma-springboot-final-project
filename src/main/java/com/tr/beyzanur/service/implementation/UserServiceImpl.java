@@ -1,5 +1,6 @@
 package com.tr.beyzanur.service.implementation;
 
+import com.tr.beyzanur.exception.ServiceOperationException;
 import com.tr.beyzanur.model.User;
 import com.tr.beyzanur.repository.UserRepository;
 import com.tr.beyzanur.service.UserService;
@@ -30,9 +31,21 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+
     @Override
     public User findByUserName(String userName) {
         return userRepository.findByUsername(userName);
+    }
+
+    @Override
+    public User findById(Long userId){
+        return userRepository.findById(userId).
+                orElseThrow(() -> new ServiceOperationException.NotFoundException("User not found"));
+    }
+
+    @Override
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email);
     }
 
     @Override

@@ -14,11 +14,14 @@ import com.tr.beyzanur.model.enums.CardType;
 import com.tr.beyzanur.repository.CardRepository;
 import com.tr.beyzanur.service.AccountService;
 import com.tr.beyzanur.service.CardService;
+import com.tr.beyzanur.util.generator.NumberGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,7 +54,11 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public CreateCardRequest demandCardCreation(CreateCardRequest createCardRequest) {
-        Card card = cardRepository.save(cardConverter.convertToEntity(createCardRequest));
+        Card card = new Card();
+        card.setCardNumber(NumberGenerator.randomNumber());
+        card.setCreateDate(LocalDate.now());
+        card.setPaymentDate(LocalDate.now().plusMonths(1));
+        card = cardRepository.save(cardConverter.convertToEntity(createCardRequest));
         log.info("Card ID -> {} date: {} saved", card.getId(), new Date());
         return cardConverter.convertToDto(card);
     }
@@ -70,6 +77,7 @@ public class CardServiceImpl implements CardService {
     public void addAccountToCard(Long accountId, Long cardId) {
         Account account = accountConverter.
                 convertToEntityFromResponse(accountService.getAccountById(accountId));
+        account.setId(accountId);
 
         AccountType accountType = account.getAccountType();
         AccountStatus accountStatus = account.getAccountStatus();
@@ -83,12 +91,17 @@ public class CardServiceImpl implements CardService {
         }
 
         Card card = cardRepository.getById(cardId);
-        System.out.println(card.getCustomer().getId());
-        card.getAccountList().add(account);
-        cardRepository.save(card);
+
+        account.getCards().add(card);
+        accountService.saveAccount(account);
 
         log.info("Added Account ID -> {} To Cart date: {} ", account.getId(), new Date());
 
+    }
+
+    @Override
+    public void saveCard(Card card) {
+        cardRepository.save(card);
     }
 
     @Override
@@ -106,11 +119,11 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void removeAccountToCard(Long accountId, Long cardId) {
-        Account account = accountConverter.
-                convertToEntityFromResponse(accountService.getAccountById(accountId));
+        Account account = accountConverter.convertToEntityFromResponse(accountService.getAccountById(accountId));
+        account.setId(accountId);
 
         Card card = cardRepository.getById(cardId);
-
+        card.setId(cardId);
         card.getAccountList().remove(account);
 
         log.info("Removed Account ID -> {} To Cart date: {} ", account.getId(), new Date());
@@ -145,8 +158,48 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    public void removeAllAccountsFromCard(Long cardId) {
+        Card card = cardRepository.findById(cardId).
+                orElseThrow(() -> new ServiceOperationException.NotFoundException("Card not found"));
+
+        List<Account> accountList = card.getAccountList();
+        for (Account account : accountList) {
+            card.getAccountList().remove(account);
+        }
+    }
+
+    @Override
+    @Transactional
+    public CardResponseDto updateDebt(Long id, BigDecimal money) throws Exception {
+        Card card = cardRepository.findById(id)
+                .orElseThrow(() -> new ServiceOperationException.NotFoundException(" card not found"));
+
+        CardType cardType = card.getCardType();
+
+        if (!(cardType == CardType.CREDIT)) {
+            throw new ServiceOperationException.NotValidException("this is not credit card");
+        }
+
+        int checkLimit = card.getBoundary().compareTo(card.getDebt());
+
+        if (checkLimit == 1) {
+            card.setDebt(card.getDebt().add(money));
+            return cardConverter.convertToResponseDto(cardRepository.save(card));
+        } else {
+            throw new Exception("Limit not enough!");
+        }
+    }
+
+
+    @Override
     public void deleteCard(Long id) {
+
+        cardRepository.findById(id).orElseThrow(
+                () -> new ServiceOperationException.NotFoundException("Account not found"));
+
+        removeAllAccountsFromCard(id);
         log.info("Card ID -> {} date: {} deleted", id, new Date());
+
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.tr.beyzanur.controller;
 
 import com.tr.beyzanur.dto.request.CreateCardRequest;
-import com.tr.beyzanur.dto.response.AccountResponseDto;
 import com.tr.beyzanur.dto.response.CardResponseDto;
 import com.tr.beyzanur.service.CardService;
 import com.tr.beyzanur.util.constant.MessageResponse;
@@ -28,7 +27,7 @@ public class CardController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponse( "Cart demand creation saved successfully!"));
     }
 
-    @GetMapping("/user-accounts/{id}")
+    @GetMapping("/customer-cards/{id}")
     public ResponseEntity<List<CardResponseDto>> getCardsByCustomerId(@PathVariable Long id) {
         entityIdValidator.validate(id, "card");
         return ResponseEntity.ok(cardService.getCardsByCustomerId(id));

@@ -54,15 +54,16 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public synchronized void demandAccountCreation(AccountRequestDto accountRequestDto) {
         Account account = new Account();
-        account.setAccountNumber(NumberGenerator.accountNumberGenerator());
+        account.setAccountNumber(NumberGenerator.randomNumber());
         account.setAccountType(accountRequestDto.getAccountType());
         account.setAccountStatus(AccountStatus.PENDING);
         account.setBalance(account.getBalance());
         account.setCustomer(customerConverter.convertToEntity(accountRequestDto.getCustomerResponseDto()));
         account.setCreatedDate(LocalDate.now());
-        account.setBankCode(NumberGenerator.accountNumberGenerator());
+        account.setBankCode(NumberGenerator.randomNumber());
         account.setCurrency(accountRequestDto.getCurrency());
         account.setIsDeleted(Boolean.FALSE);
+        account.setIban(UUID.randomUUID());
 
         Long customerId = account.getCustomer().getId();
         Boolean checkCustomerHasAccount = accountRepository.existsByCustomerId(customerId);
@@ -80,7 +81,7 @@ public class AccountServiceImpl implements AccountService {
                 card.setCardStatus(CardStatus.PENDING);
                 card.setIsDeleted(Boolean.FALSE);
                 card.setBoundary(BigDecimal.ZERO);
-                card.setCardNumber(NumberGenerator.accountNumberGenerator());
+                card.setCardNumber(NumberGenerator.randomNumber());
                 card.setCardType(CardType.BANK);
                 card.setDebt(BigDecimal.ZERO);
                 System.out.println(account.getId());
@@ -191,6 +192,7 @@ public class AccountServiceImpl implements AccountService {
     public Account findByIban(UUID iban){
         return accountRepository.findByIban(iban);
     }
+
 
     @Override
     public void deleteAccount(Long id) {

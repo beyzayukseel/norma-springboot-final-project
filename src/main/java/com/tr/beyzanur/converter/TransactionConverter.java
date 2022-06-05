@@ -13,6 +13,7 @@ public class TransactionConverter {
     public Transaction convertToEntity(CreateTransactionDto dto) {
         Transaction transaction = new Transaction();
         if (dto != null){
+
             BeanUtils.copyProperties(dto,transaction);
         }
         return transaction;

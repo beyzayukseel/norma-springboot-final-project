@@ -53,4 +53,12 @@ public class CardConverter {
         }
         return cardResponseDto;
     }
+
+    public Card convertToResponseDto(CardResponseDto dto) {
+        Card card = new Card();
+        if (dto != null) {
+            BeanUtils.copyProperties(dto, card);
+        }
+        return card;
+    }
 }

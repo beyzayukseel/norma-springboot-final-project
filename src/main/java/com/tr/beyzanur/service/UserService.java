@@ -8,8 +8,14 @@ public interface UserService {
 
     void saveUser(User user);
 
+    User findById(Long userId);
+
+    User findByEmail(String email);
+
     Page<User> getAllUsers(int pageSize, int pageNumber);
 
     User findByIdentifyNumber(String identifyNumber);
+
+
     User findByUserName(String userName);
 }

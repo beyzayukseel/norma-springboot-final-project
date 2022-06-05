@@ -23,7 +23,9 @@ public class CustomerController {
 
     @PostMapping()
     public ResponseEntity<String> createCustomer(@RequestBody CreateCustomerDto createCustomerDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(customerService.createCustomer(createCustomerDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body("Customer created successfully. " +
+                "Your first generated login password:" +
+                customerService.createCustomer(createCustomerDto));
     }
 
     @GetMapping( "/{id}")
@@ -33,8 +35,9 @@ public class CustomerController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping
-    public ResponseEntity<List<CustomerResponseDto>> getAllCustomers(int pageSize, int pageNumber){
+    @GetMapping( "/{pageSize}/{pageNumber}")
+    public ResponseEntity<List<CustomerResponseDto>> getAllCustomers(@PathVariable int pageSize,
+                                                                     @PathVariable int pageNumber){
         return ResponseEntity.ok(customerService.getAllCustomers(pageSize, pageNumber));
     }
 

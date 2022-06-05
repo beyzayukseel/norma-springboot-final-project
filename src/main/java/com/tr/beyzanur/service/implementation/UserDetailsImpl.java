@@ -2,7 +2,9 @@ package com.tr.beyzanur.service.implementation;
 
 import com.tr.beyzanur.dto.request.CreateUserDto;
 import com.tr.beyzanur.dto.request.LoginRequest;
+import com.tr.beyzanur.dto.request.PasswordDto;
 import com.tr.beyzanur.dto.response.UserResponse;
+import com.tr.beyzanur.exception.ServiceOperationException;
 import com.tr.beyzanur.model.Role;
 import com.tr.beyzanur.model.User;
 import com.tr.beyzanur.model.enums.RoleType;
@@ -10,9 +12,6 @@ import com.tr.beyzanur.security.JwtUtils;
 import com.tr.beyzanur.security.MyUserDetails;
 import com.tr.beyzanur.service.RoleService;
 import com.tr.beyzanur.service.UserService;
-import com.tr.beyzanur.util.Generator;
-import com.tr.beyzanur.util.generator.FirstBankPasswordGenerator;
-import com.tr.beyzanur.util.generator.NumberGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -55,7 +54,7 @@ public class UserDetailsImpl {
 
         log.info("Username -> {} date: {} logging", loginRequest.getUsername(), new Date());
 
-        return(new UserResponse(jwt,
+        return (new UserResponse(jwt,
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
@@ -67,6 +66,7 @@ public class UserDetailsImpl {
         User user = new User();
         user.setIdentifyNumber(createUserDto.getIdentifyNumber());
         user.setPassword(encoder.encode(createUserDto.getPassword()));
+        System.out.println("aa0" + user.getPassword());
         user.setEmail(createUserDto.getEmail());
         user.setUsername(createUserDto.getName());
         user.setIsBlocked(Boolean.FALSE);
@@ -99,5 +99,21 @@ public class UserDetailsImpl {
         log.info("User ID -> {} date: {} registered", user.getId(), new Date());
 
         return user;
+    }
+
+    public void changePassword(PasswordDto passwordDto) {
+        User user = userService.findByIdentifyNumber(passwordDto.getIdentifyNumber());
+        if (user == null) {
+            throw new ServiceOperationException.NotFoundException("identify not found!");
+        }
+
+        String newPassword = encoder.encode(passwordDto.getNewPassword());
+        user.setPassword(newPassword);
+        userService.saveUser(user);
+
+    }
+
+    public void deleteUser(Long userId) {
+        userService.deleteUser(userId);
     }
 }

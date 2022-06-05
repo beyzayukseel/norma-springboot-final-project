@@ -20,7 +20,7 @@ public class CustomerConverter {
 
     public Customer convertToEntity(CreateCustomerDto dto) {
         Customer customer = new Customer();
-        customer.setCustomerNumber(NumberGenerator.accountNumberGenerator());
+        customer.setCustomerNumber(NumberGenerator.randomNumber());
         customer.setIsDeleted(Boolean.FALSE);
         customer.setUser((userConverter.convertToEntity(dto.getCreateUserDto())));
 

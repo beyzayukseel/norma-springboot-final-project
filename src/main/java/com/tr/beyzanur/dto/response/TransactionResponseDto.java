@@ -1,6 +1,5 @@
 package com.tr.beyzanur.dto.response;
-
-import com.tr.beyzanur.dto.request.AccountRequestDto;
+import com.tr.beyzanur.model.enums.TransactionStatus;
 import com.tr.beyzanur.model.enums.TransactionType;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,5 +16,5 @@ public class TransactionResponseDto {
     private String destinationIbanNumber;
     private BigDecimal quantity;
     private TransactionType transactionType;
-    private AccountResponseDto accountResponseDto;
+    private TransactionStatus transactionStatus;
 }

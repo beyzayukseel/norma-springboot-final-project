@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,13 +17,15 @@ import java.util.Objects;
 @Entity
 @Setter
 @Getter
-public class Card extends BaseModel implements Serializable {
+public class Card extends BaseModel {
 
     private String cardNumber;
     private BigDecimal boundary=BigDecimal.ZERO;
     private BigDecimal debt = BigDecimal.ZERO;
     private Boolean isDeleted;
     private CardType cardType;
+    private LocalDate createDate;
+    private LocalDate paymentDate;
 
     @Enumerated(EnumType.STRING)
     private CardStatus cardStatus;

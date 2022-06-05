@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tr.beyzanur.model.enums.AccountStatus;
 import com.tr.beyzanur.model.enums.AccountType;
 import com.tr.beyzanur.model.enums.Currency;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,6 +15,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 @Entity
@@ -52,6 +56,7 @@ public class Account extends BaseModel implements Serializable {
     private List<Card> cards = new ArrayList<>();
 
     private Boolean isDeleted;
+
 
     @Override
     public boolean equals(Object o) {

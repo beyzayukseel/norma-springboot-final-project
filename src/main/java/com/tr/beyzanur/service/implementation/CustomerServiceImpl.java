@@ -2,7 +2,6 @@ package com.tr.beyzanur.service.implementation;
 
 import com.tr.beyzanur.converter.CustomerAddressConverter;
 import com.tr.beyzanur.converter.CustomerConverter;
-import com.tr.beyzanur.converter.UserConverter;
 import com.tr.beyzanur.dto.request.CreateCustomerDto;
 import com.tr.beyzanur.dto.request.UpdateCustomerDto;
 import com.tr.beyzanur.dto.response.CustomerResponseDto;
@@ -42,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public String createCustomer(CreateCustomerDto createCustomerDto) {
         Customer customer = new Customer();
-        customer.setCustomerNumber(NumberGenerator.accountNumberGenerator());
+        customer.setCustomerNumber(NumberGenerator.randomNumber());
         customer.setIsDeleted(Boolean.FALSE);
         customer.setCustomerAddress(customerAddressConverter.convertToEntity(createCustomerDto.getCustomerAddressResponseDto()));
         String password = FirstBankPasswordGenerator.firstBankPasswordGenerator();
@@ -56,14 +55,17 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerResponseDto getCustomerById(Long id) {
-        Customer customer = customerRepository.findById(id).orElseThrow();
+        Customer customer = customerRepository.findById(id).orElseThrow(
+                () -> new ServiceOperationException.NotFoundException("Customer not found"));
         log.info("Customer ID -> {} date: {} getting", id, new Date());
         return customerConverter.convertToDto(customer);
     }
 
     @Override
     public void updateCustomer(UpdateCustomerDto updateCustomerDto) {
-        customerRepository.findById(updateCustomerDto.getId()).orElseThrow();
+        customerRepository.findById(updateCustomerDto.getId()).orElseThrow(() ->
+                new ServiceOperationException.NotFoundException("Customer not found"));
+
         Customer customer = customerConverter.convertToEntity(updateCustomerDto);
         customerRepository.save(customer);
         log.info("Customer ID -> {} date: {} updated", updateCustomerDto.getId(), new Date());
@@ -85,8 +87,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .findById(id)
                 .orElseThrow(() -> new ServiceOperationException.NotFoundException("Customer not found"));
 
-        User user = new User();
-        user.setId(customer.getUser().getId());
+        User user = userService.findById(customer.getUser().getId());
 
         if (customer.getIsDeleted()) {
             throw new ServiceOperationException.AlreadyDeletedException("Customer has already been deleted");
