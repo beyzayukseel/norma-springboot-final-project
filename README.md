@@ -1,5 +1,38 @@
 # Norma Spring Boot Final Project
 
+## Used Technologies & Arhitecture & Methods:
+* Monolithic Architecture 
+* Java 17
+* Spring Boot 
+* Spring Security 
+* Postgres 
+* JWT
+* Swagger
+
+## Swagger Endpoint
+* http://localhost:8086/swagger-ui/index.html#/
+
+## Fuctions
+* Customer Manangement
+* User Management
+* Account Management
+* Card Management
+* Tarnsfer Management
+
+## About Project Flow 
+
+The basic working logic of the project is as follows. Customers can create accounts and cards, and connect more than one account to one card, within the framework of certain rules, after the following transactions are carried out.
+
+![bank-flow](img/bank_flow.jpg)
+
+
+## Database Diagrams
+
+![bank](img/bank.jpg)
+
+
+## Project Description
+
 Bu bitirme projesi kapsamında bootcamp katılımcılarının bir online bankacılık sisteminin backend servislerini yazmaları 
 beklenmektedir. Proje kapsamında beklenen minimum fonksiyonlar ve teknik ihtiyaçlar aşağıda listelenmiştir.
 
