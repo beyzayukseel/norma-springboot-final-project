@@ -23,12 +23,12 @@
 
 The basic working logic of the project is as follows. Customers can create accounts and cards, and connect more than one account to one card, within the framework of certain rules, after the following transactions are carried out.
 
-![bank-flow](img/bank_flow.jpg)
+![bank-flow](img/bank-flow.JPG)
 
 
 ## Database Diagrams
 
-![bank](img/bank.jpg)
+![bank](img/bank.png)
 
 
 ## Project Description
